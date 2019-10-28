@@ -519,7 +519,8 @@ ElGrapho.prototype = {
         }
 
         // change point state
-        if (dataIndex !== that.hoveredDataIndex) {
+        // ** modified by maxmin93 (2019-10-28)
+        if (that.hoveredDataIndex > -1 && dataIndex !== that.hoveredDataIndex) {
           // if (that.hoveredDataIndex > -1) {
           //   that.vertices.points.focused[that.hoveredDataIndex] = 0;
           // }
@@ -531,21 +532,25 @@ ElGrapho.prototype = {
 
 
 
-          if (that.hoveredDataIndex !== -1) {
+//          if (that.hoveredDataIndex !== -1) {
             that.fire(Enums.events.NODE_MOUSEOUT, {
               dataIndex: that.hoveredDataIndex
-            });  
-          }
-          
-          that.hoveredDataIndex = dataIndex;
-          that.hoverDirty = true;
-          //that.dirty = true; 
+            });
+//          }
 
-          if (that.hoveredDataIndex !== -1) {
+            // ** modified by maxmin93 (2019-10-28)
+            // **NOTE : When nodes.length = 0, hoveredDataIndex is changed to 0
+            //          This happen to error with drawing hover-ring
+            //      ==> So, remove inside if-stmt and insert 'that.hoveredDataIndex > -1 &&' at outside if-stmt
+            that.hoveredDataIndex = dataIndex;
+            that.hoverDirty = true;
+            //that.dirty = true;
+
+//          if (that.hoveredDataIndex !== -1) {
             that.fire(Enums.events.NODE_MOUSEOVER, {
               dataIndex: that.hoveredDataIndex
-            });  
-          }       
+            });
+//          }
         }
       }    
     // need trailing false because we hide the tooltip on mouseleave.  without trailing false, the tooltip sometimes would render afterwards  
