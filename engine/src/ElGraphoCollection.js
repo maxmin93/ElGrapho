@@ -1,6 +1,6 @@
 const EasingFunctions = require('./EasingFunctions');
 const styles = require('../dist/styles/ElGrapho.min.css.js');
-const Enums = require('./Enums');
+// const Enums = require('./Enums');
 
 let ElGraphoCollection = {
   graphs: [],
@@ -84,9 +84,6 @@ let ElGraphoCollection = {
         graph.renderRings(scale);
       }
         
-        
-
-
       if (graph.dirty) {
         idle = false;
         let focusedGroup = graph.focusedGroup;
@@ -115,13 +112,13 @@ let ElGraphoCollection = {
       graph.hoverDirty = false;
       graph.hitDirty = false; 
 
-      if (idle && !graph.idle) {
-        graph.fire(Enums.events.IDLE);
-      }
+      // ** modified by maxmin93 (2019-10-30)
+      // ** NOTE: Because executeFrame doing twice, idle fire also twice
+      // if (idle && !graph.idle) {
+      //   graph.fire(Enums.events.IDLE);
+      // }
 
       graph.idle = idle;
-
-
     });
 
     requestAnimationFrame(ElGraphoCollection.executeFrame);

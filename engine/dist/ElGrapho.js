@@ -1,7 +1,7 @@
 /*
  * El Grapho v2.4.0
  * A high performance WebGL graph data visualization engine
- * Release Date: 10-28-2019
+ * Release Date: 10-30-2019
  * https://github.com/ericdrowell/elgrapho
  * Licensed under the MIT or GPL Version 2 licenses.
  *
@@ -186,6 +186,20 @@ module.exports = `
 </g>
 </svg>
 `;
+
+/***/ }),
+
+/***/ "./engine/dist/icons/cropIcon.svg.js":
+/*!*******************************************!*\
+  !*** ./engine/dist/icons/cropIcon.svg.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = `<svg width="20" height="20" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="crop-alt" class="svg-inline--fa fa-crop-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<path fill="currentColor" d="M488 352h-40V96c0-17.67-14.33-32-32-32H192v96h160v328c0 13.25 10.75 24 24 24h48c13.25 0 24-10.75 24-24v-40h40c13.25 0 24-10.75 24-24v-48c0-13.26-10.75-24-24-24zM160 24c0-13.26-10.75-24-24-24H88C74.75 0 64 10.74 64 24v40H24C10.75 64 0 74.74 0 88v48c0 13.25 10.75 24 24 24h40v256c0 17.67 14.33 32 32 32h224v-96H160V24z">
+</path>
+</svg>`;
 
 /***/ }),
 
@@ -842,7 +856,7 @@ void main() {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = `.el-grapho-tooltip{position:fixed;background-color:white;pointer-events:none;padding:10px;border:1px solid #333;border-radius:3px;font-family:verdana;font-size:12px;user-select:none}.el-grapho-controls{position:absolute;left:0;bottom:5px;opacity:0;transition:opacity .3s ease-in-out}.el-grapho-controls button{background:white;padding:5px;cursor:pointer;outline:0;border:2px solid black;border-radius:3px;margin-right:5px}.el-grapho-controls .el-grapho-step-down-control{transform:scale(1,-1)}.el-grapho-wrapper:hover .el-grapho-controls{opacity:1}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button{background:black;border-color:white;color:white;border-color:#aaa}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button path,.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button polygon,.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button rect{fill:white}.el-grapho-wrapper.el-grapho-select-interaction-mode{cursor:default}.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control path,.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-pan-interaction-mode{cursor:move}.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control path,.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode{cursor:zoom-in}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control path,.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control polygon{fill:#119fe0}.el-grapho-count{position:absolute;bottom:5px;right:5px;pointer-events:none;font-family:monospace;background-color:white;border-radius:3px;padding:3px;opacity:.9}.el-grapho-count::selection{background:transparent}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-count{background-color:black;color:white}.el-grapho-box-zoom-component{position:fixed;border:1px solid #119fe0;background-color:rgba(17,159,224,0.1);pointer-events:none}.el-grapho-loading-component{width:100%;height:100%;background-color:rgba(255,255,255,0.9);position:absolute;top:0;opacity:0;transition:opacity .3s ease-in-out;pointer-events:none}.el-grapho-loading .el-grapho-loading-component{opacity:1}.spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.spinner>div{width:18px;height:18px;background-color:#333;border-radius:100%;display:inline-block;-webkit-animation:sk-bouncedelay 1.4s infinite ease-in-out both;animation:sk-bouncedelay 1.4s infinite ease-in-out both}.spinner .bounce1{-webkit-animation-delay:-0.32s;animation-delay:-0.32s}.spinner .bounce2{-webkit-animation-delay:-0.16s;animation-delay:-0.16s}@-webkit-keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0)}40%{-webkit-transform:scale(1)}}@keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);transform:scale(1)}}.el-grapho-wrapper{display:inline-block;position:relative;background-color:white;overflow:hidden}.el-grapho-wrapper.el-grapho-select-interaction-mode{cursor:default}.el-grapho-wrapper.el-grapho-pan-interaction-mode{cursor:move}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode{cursor:zoom-in}.el-grapho-wrapper.el-grapho-dark-mode{background-color:black}
+module.exports = `.el-grapho-tooltip{position:fixed;background-color:white;pointer-events:none;padding:10px;border:1px solid #333;border-radius:3px;font-family:verdana;font-size:12px;user-select:none}.el-grapho-controls{position:absolute;left:0;bottom:5px;opacity:0;transition:opacity .3s ease-in-out}.el-grapho-controls button{background:white;padding:5px;cursor:pointer;outline:0;border:2px solid black;border-radius:3px;margin-right:5px}.el-grapho-controls .el-grapho-step-down-control{transform:scale(1,-1)}.el-grapho-wrapper:hover .el-grapho-controls{opacity:1}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button{background:black;border-color:white;color:white;border-color:#aaa}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button path,.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button polygon,.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button rect{fill:white}.el-grapho-wrapper.el-grapho-select-interaction-mode{cursor:default}.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control path,.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-pan-interaction-mode{cursor:move}.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control path,.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode{cursor:zoom-in}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control path,.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control polygon{fill:#119fe0}.el-grapho-count{position:absolute;bottom:3px;right:5px;pointer-events:none;font-family:monospace;background-color:white;border-radius:3px;padding:3px;opacity:.9}.el-grapho-count::selection{background:transparent}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-count{background-color:black;color:white}.el-grapho-box-zoom-component{position:fixed;border:1px solid #119fe0;background-color:rgba(17,159,224,0.1);pointer-events:none}.el-grapho-loading-component{width:100%;height:100%;background-color:rgba(255,255,255,0.9);position:absolute;top:0;opacity:0;transition:opacity .3s ease-in-out;pointer-events:none}.el-grapho-loading .el-grapho-loading-component{opacity:1}.spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.spinner>div{width:18px;height:18px;background-color:#333;border-radius:100%;display:inline-block;-webkit-animation:sk-bouncedelay 1.4s infinite ease-in-out both;animation:sk-bouncedelay 1.4s infinite ease-in-out both}.spinner .bounce1{-webkit-animation-delay:-0.32s;animation-delay:-0.32s}.spinner .bounce2{-webkit-animation-delay:-0.16s;animation-delay:-0.16s}@-webkit-keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0)}40%{-webkit-transform:scale(1)}}@keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);transform:scale(1)}}.el-grapho-wrapper{display:inline-block;position:relative;background-color:white;overflow:hidden}.el-grapho-wrapper.el-grapho-select-interaction-mode{cursor:default}.el-grapho-wrapper.el-grapho-pan-interaction-mode{cursor:move}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode{cursor:zoom-in}.el-grapho-wrapper.el-grapho-dark-mode{background-color:black}
 `;
 
 /***/ }),
@@ -1150,12 +1164,14 @@ ElGrapho.prototype = {
 
     // normalized width is 2 and height is 2.  Thus, to give a little padding,
     // using 1.9
+    // ** modified by maxmin93 (2019-10-30)
+    //    graph margin ratio : 1.9 ==> 1.7
     let diffX = maxX - minX;
     let diffY = maxY - minY;
     let xOffset = minX + diffX / 2;
     let yOffset = minY + diffY / 2;
-    let xFactor = 1.9 / diffX;
-    let yFactor = 1.9 / diffY;
+    let xFactor = 1.7 / diffX;
+    let yFactor = 1.7 / diffY;
 
     // we want to adjust the x and y equally to preserve ratio
 
@@ -1403,11 +1419,18 @@ ElGrapho.prototype = {
       that.stepDown();
     });
 
+    // ** modified by maxmin93 (2019-10-30)
+    this.on('crop', function(){
+      that.setInteractionMode(Enums.interactionMode.CROP);
+    });
+
     this.addListener(document, 'mousedown', function(evt) {
       if (Dom.closest(evt.target, '.el-grapho-controls')) {
         return;
       }
-      if (that.interactionMode === Enums.interactionMode.BOX_ZOOM) {
+
+      // ** modified by maxmin93 (2019-10-30)
+      if( (that.interactionMode === Enums.interactionMode.BOX_ZOOM)||(that.interactionMode === Enums.interactionMode.CROP) ){
         let mousePos = that.getMousePosition(evt);
         that.zoomBoxAnchor = {
           x: mousePos.x,
@@ -1416,11 +1439,10 @@ ElGrapho.prototype = {
 
         BoxZoom.create(evt.clientX, evt.clientY);
       }
+
     });
 
     this.addListener(viewport.container, 'mousedown', function(evt) {
-      
-      
       if (Dom.closest(evt.target, '.el-grapho-controls')) {
         return;
       }
@@ -1428,13 +1450,12 @@ ElGrapho.prototype = {
         let mousePos = that.getMousePosition(evt);
         that.panStart = mousePos;
         Tooltip.hide();
-        
-
       }
     });
 
     this.addListener(document, 'mousemove', function(evt) {
-      if (that.interactionMode === Enums.interactionMode.BOX_ZOOM) {
+      // ** modified by maxmin93 (2019-10-30)
+      if( (that.interactionMode === Enums.interactionMode.BOX_ZOOM)||(that.interactionMode === Enums.interactionMode.CROP) ){
         BoxZoom.update(evt.clientX, evt.clientY);
       }
     });
@@ -1562,6 +1583,32 @@ ElGrapho.prototype = {
           topLeftY = that.zoomBoxAnchor.y;   
         }
 
+        ///////////////////////////////////
+        // ** modified by maxmin93 (2019-10-30)
+        // 비율에 맞는 zooming.
+        // 현재 스크린 비율에 따라 boxselection을 조절하여 비율에 맞는 zooming이 되도록 하기(비율, width:height = x:y)
+        // algorithm
+        // 1. y를 고정하고 y에 대한 x의 비율의 값을 구함 => x'
+        // 2. x를 고정하고 x에 대한 y의 비율의 값을 구함 => y'
+        // 3. 만약 x가 x' 보다 작으면: x=x', topleftx 값을 조절
+        // 4. 만약 x가 x' 보다 크면: y=y', toplefty 값을 조절
+        //////////////////////////////////
+        
+        let screen_width = that.width;
+        let screen_height = that.height;
+        let fit_x = screen_width*height/screen_height;
+        let fit_y = screen_height*width/screen_width;
+
+        if ( width <= fit_x ) {
+          topLeftX = topLeftX - ((fit_x-width)/2);
+          width = fit_x;
+        } else {
+          topLeftY = topLeftY - ((fit_y-height)/2);
+          height = fit_y;
+        }
+
+        //////////////////////////////////
+
         let viewportWidth = viewport.width;
         let viewportHeight = viewport.height;
 
@@ -1592,6 +1639,26 @@ ElGrapho.prototype = {
         BoxZoom.destroy();
         that.zoomBoxAnchor = null;
       }
+      // ** modified by maxmin93 (2019-10-30)
+      // crop mode
+      else if (that.interactionMode === Enums.interactionMode.CROP) {
+        if (!that.zoomBoxAnchor) {    // previous mouse position 
+          return;
+        }
+
+        let mousePos = that.getMousePosition(evt);
+        let selectedNodes = that.selectByBox( that.zoomBoxAnchor, mousePos );
+
+        BoxZoom.destroy();
+        that.zoomBoxAnchor = null;
+
+        // single node cannot be cropped.
+        if( selectedNodes.length > 1 ) {
+          // like box selection
+          that.fire(Enums.events.NODES_CROP, { nodes: selectedNodes});
+        }
+      }
+
     });
     this.addListener(viewport.container, 'mouseup', function(evt) {
       if (Dom.closest(evt.target, '.el-grapho-controls')) {
@@ -1605,6 +1672,8 @@ ElGrapho.prototype = {
         if (dataIndex === -1) {
           that.deselectNode();
           that.deselectGroup();
+          // ** modified by maxmin93 (2019-10-30)
+          that.fire(Enums.events.IDLE, {pos: mousePos});          
         }
         else {
           that.selectNode(dataIndex);
@@ -1800,7 +1869,74 @@ ElGrapho.prototype = {
   deselectNode: function() {
     this.selectedIndex = -1;
     this.hoverDirty = true;
-  }
+  },
+
+  ////////////////////////////////////////////////////
+    // select model in boxSelection
+  selectByBox: function(mouseDownPos, mouseUpPos) {
+    // mouse area
+    let start_x = (mouseDownPos.x<mouseUpPos.x) ? mouseDownPos.x : mouseUpPos.x;
+    let start_y = (mouseDownPos.y<mouseUpPos.y) ? mouseDownPos.y : mouseUpPos.y;
+    let end_x = (mouseDownPos.x<mouseUpPos.x) ? mouseUpPos.x : mouseDownPos.x;
+    let end_y = (mouseDownPos.y<mouseUpPos.y) ? mouseUpPos.y : mouseDownPos.y;
+
+    let screenArea = this.getScreenArea();
+    let boxArea = this.getBoxArea(screenArea, {start_x, start_y, end_x, end_y});
+
+    let selectedNodes = [];
+    let nodes = this.model.nodes;
+    for ( let i=0; i<nodes.length; i++ ) {
+      let node_position = this.mapToScreenArea(nodes[i].x, nodes[i].y);
+      // match each node position to boxArea
+      if ( node_position.screen_x >= boxArea.start_x &&
+           node_position.screen_x <= boxArea.end_x &&
+           node_position.screen_y >= boxArea.start_y &&
+           node_position.screen_y <= boxArea.end_y ) {
+        
+        if (!nodes[i].hasOwnProperty('dataIndex')) {
+          nodes[i].dataIndex = i;
+        }        
+        selectedNodes.push(_.cloneDeep(nodes[i]));
+      }
+    }
+
+    return selectedNodes;
+  },
+  getBoxArea(screenArea, mouseArea) {
+    let unit_x = (screenArea.end_x - screenArea.start_x) / this.width;
+    let unit_y = (screenArea.end_y - screenArea.start_y) / this.height;
+
+    return {start_x: screenArea.start_x + (unit_x * Math.round(mouseArea.start_x)),
+            start_y: screenArea.start_y + (unit_y * Math.round(mouseArea.start_y)),
+            end_x: screenArea.start_x + (unit_x * Math.round(mouseArea.end_x)),
+            end_y: screenArea.start_y + (unit_y * Math.round(mouseArea.end_y))};
+  },
+  mapToScreenArea: function(norm_x, norm_y) {
+    let center_x = this.width / 2,
+        center_y = this.height / 2;
+    let screen_x = center_x + (center_x * norm_x),
+        screen_y = center_y - (center_y * norm_y);
+    return {screen_x: screen_x, screen_y: screen_y};
+  },
+  getScreenArea: function() {
+    let screen_starting_x =  (this.panX==0) ? 0 : -(this.panX/this.zoomX);
+    let screen_starting_y = (this.panY/this.zoomY);
+    let screen_ending_x = this.width - (this.panX/this.zoomX);
+    let screen_ending_y = this.height + (this.panY/this.zoomY);
+
+    let center_x = (screen_starting_x + screen_ending_x) / 2;
+    let center_y = (screen_starting_y + screen_ending_y) / 2;
+    
+    let offset_x = (center_x - screen_starting_x) / this.zoomX;
+    let offset_y = (center_y - screen_starting_y) / this.zoomY;
+
+    let start_x = center_x - offset_x;
+    let start_y = center_y - offset_y;
+    let end_x = center_x + offset_x;
+    let end_y = center_y + offset_y;
+
+    return {start_x: start_x, start_y: start_y, end_x: end_x, end_y: end_y};
+  }  
 };
 
 // export modules
@@ -1831,7 +1967,7 @@ module.exports = ElGrapho;
 
 const EasingFunctions = __webpack_require__(/*! ./EasingFunctions */ "./engine/src/EasingFunctions.js");
 const styles = __webpack_require__(/*! ../dist/styles/ElGrapho.min.css.js */ "./engine/dist/styles/ElGrapho.min.css.js");
-const Enums = __webpack_require__(/*! ./Enums */ "./engine/src/Enums.js");
+// const Enums = require('./Enums');
 
 let ElGraphoCollection = {
   graphs: [],
@@ -1915,9 +2051,6 @@ let ElGraphoCollection = {
         graph.renderRings(scale);
       }
         
-        
-
-
       if (graph.dirty) {
         idle = false;
         let focusedGroup = graph.focusedGroup;
@@ -1946,13 +2079,13 @@ let ElGraphoCollection = {
       graph.hoverDirty = false;
       graph.hitDirty = false; 
 
-      if (idle && !graph.idle) {
-        graph.fire(Enums.events.IDLE);
-      }
+      // ** modified by maxmin93 (2019-10-30)
+      // ** NOTE: Because executeFrame doing twice, idle fire also twice
+      // if (idle && !graph.idle) {
+      //   graph.fire(Enums.events.IDLE);
+      // }
 
       graph.idle = idle;
-
-
     });
 
     requestAnimationFrame(ElGraphoCollection.executeFrame);
@@ -1990,12 +2123,16 @@ const Enums = {
     IDLE: 'idle',
     NODE_MOUSEOVER: 'node-mouseover',
     NODE_MOUSEOUT: 'node-mouseout',
-    NODE_CLICK: 'node-click'
+    NODE_CLICK: 'node-click',
+    // modified by maxmin93 (2019-10-30)
+    NODES_CROP: 'nodes-crop'
   },
   interactionMode: {
     SELECT: 'select',
     PAN: 'pan',
-    BOX_ZOOM: 'box-zoom'
+    BOX_ZOOM: 'box-zoom',
+    // modified by maxmin93 (2019-10-30)
+    CROP: 'crop'
   }
 };
 
@@ -2868,6 +3005,7 @@ const moveIcon = __webpack_require__(/*! ../../../dist/icons/moveIcon.svg */ "./
 const selectIcon = __webpack_require__(/*! ../../../dist/icons/selectIcon.svg */ "./engine/dist/icons/selectIcon.svg.js");
 const boxZoomIcon = __webpack_require__(/*! ../../../dist/icons/boxZoomIcon.svg */ "./engine/dist/icons/boxZoomIcon.svg.js");
 const resetIcon = __webpack_require__(/*! ../../../dist/icons/resetIcon.svg */ "./engine/dist/icons/resetIcon.svg.js");
+const cropIcon = __webpack_require__(/*! ../../../dist/icons/cropIcon.svg */ "./engine/dist/icons/cropIcon.svg.js");
 
 const Controls = function(config) {
   this.graph = config.graph;
@@ -2881,17 +3019,21 @@ const Controls = function(config) {
     icon: selectIcon,
     evtName: 'select'
   });
-  this.boxZoomIcon = this.addButton({
-    icon: boxZoomIcon,
-    evtName: 'box-zoom'
-  });
   this.panButton = this.addButton({
     icon: moveIcon,
     evtName: 'pan'
   });
+  this.cropButton = this.addButton({
+    icon: cropIcon,
+    evtName: 'crop'
+  });  
   this.resetButton = this.addButton({
     icon: resetIcon,
     evtName: 'reset'
+  });
+  this.boxZoomIcon = this.addButton({
+    icon: boxZoomIcon,
+    evtName: 'box-zoom'
   });
   this.zoomInButton = this.addButton({
     icon: zoomInIcon,

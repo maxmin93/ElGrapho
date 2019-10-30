@@ -188,12 +188,14 @@ ElGrapho.prototype = {
 
     // normalized width is 2 and height is 2.  Thus, to give a little padding,
     // using 1.9
+    // ** modified by maxmin93 (2019-10-30)
+    //    graph margin ratio : 1.9 ==> 1.7
     let diffX = maxX - minX;
     let diffY = maxY - minY;
     let xOffset = minX + diffX / 2;
     let yOffset = minY + diffY / 2;
-    let xFactor = 1.9 / diffX;
-    let yFactor = 1.9 / diffY;
+    let xFactor = 1.7 / diffX;
+    let yFactor = 1.7 / diffY;
 
     // we want to adjust the x and y equally to preserve ratio
 
@@ -441,11 +443,18 @@ ElGrapho.prototype = {
       that.stepDown();
     });
 
+    // ** modified by maxmin93 (2019-10-30)
+    this.on('crop', function(){
+      that.setInteractionMode(Enums.interactionMode.CROP);
+    });
+
     this.addListener(document, 'mousedown', function(evt) {
       if (Dom.closest(evt.target, '.el-grapho-controls')) {
         return;
       }
-      if (that.interactionMode === Enums.interactionMode.BOX_ZOOM) {
+
+      // ** modified by maxmin93 (2019-10-30)
+      if( (that.interactionMode === Enums.interactionMode.BOX_ZOOM)||(that.interactionMode === Enums.interactionMode.CROP) ){
         let mousePos = that.getMousePosition(evt);
         that.zoomBoxAnchor = {
           x: mousePos.x,
@@ -454,11 +463,10 @@ ElGrapho.prototype = {
 
         BoxZoom.create(evt.clientX, evt.clientY);
       }
+
     });
 
     this.addListener(viewport.container, 'mousedown', function(evt) {
-      
-      
       if (Dom.closest(evt.target, '.el-grapho-controls')) {
         return;
       }
@@ -466,13 +474,12 @@ ElGrapho.prototype = {
         let mousePos = that.getMousePosition(evt);
         that.panStart = mousePos;
         Tooltip.hide();
-        
-
       }
     });
 
     this.addListener(document, 'mousemove', function(evt) {
-      if (that.interactionMode === Enums.interactionMode.BOX_ZOOM) {
+      // ** modified by maxmin93 (2019-10-30)
+      if( (that.interactionMode === Enums.interactionMode.BOX_ZOOM)||(that.interactionMode === Enums.interactionMode.CROP) ){
         BoxZoom.update(evt.clientX, evt.clientY);
       }
     });
@@ -600,6 +607,32 @@ ElGrapho.prototype = {
           topLeftY = that.zoomBoxAnchor.y;   
         }
 
+        ///////////////////////////////////
+        // ** modified by maxmin93 (2019-10-30)
+        // 비율에 맞는 zooming.
+        // 현재 스크린 비율에 따라 boxselection을 조절하여 비율에 맞는 zooming이 되도록 하기(비율, width:height = x:y)
+        // algorithm
+        // 1. y를 고정하고 y에 대한 x의 비율의 값을 구함 => x'
+        // 2. x를 고정하고 x에 대한 y의 비율의 값을 구함 => y'
+        // 3. 만약 x가 x' 보다 작으면: x=x', topleftx 값을 조절
+        // 4. 만약 x가 x' 보다 크면: y=y', toplefty 값을 조절
+        //////////////////////////////////
+        
+        let screen_width = that.width;
+        let screen_height = that.height;
+        let fit_x = screen_width*height/screen_height;
+        let fit_y = screen_height*width/screen_width;
+
+        if ( width <= fit_x ) {
+          topLeftX = topLeftX - ((fit_x-width)/2);
+          width = fit_x;
+        } else {
+          topLeftY = topLeftY - ((fit_y-height)/2);
+          height = fit_y;
+        }
+
+        //////////////////////////////////
+
         let viewportWidth = viewport.width;
         let viewportHeight = viewport.height;
 
@@ -630,6 +663,26 @@ ElGrapho.prototype = {
         BoxZoom.destroy();
         that.zoomBoxAnchor = null;
       }
+      // ** modified by maxmin93 (2019-10-30)
+      // crop mode
+      else if (that.interactionMode === Enums.interactionMode.CROP) {
+        if (!that.zoomBoxAnchor) {    // previous mouse position 
+          return;
+        }
+
+        let mousePos = that.getMousePosition(evt);
+        let selectedNodes = that.selectByBox( that.zoomBoxAnchor, mousePos );
+
+        BoxZoom.destroy();
+        that.zoomBoxAnchor = null;
+
+        // single node cannot be cropped.
+        if( selectedNodes.length > 1 ) {
+          // like box selection
+          that.fire(Enums.events.NODES_CROP, { nodes: selectedNodes});
+        }
+      }
+
     });
     this.addListener(viewport.container, 'mouseup', function(evt) {
       if (Dom.closest(evt.target, '.el-grapho-controls')) {
@@ -643,6 +696,8 @@ ElGrapho.prototype = {
         if (dataIndex === -1) {
           that.deselectNode();
           that.deselectGroup();
+          // ** modified by maxmin93 (2019-10-30)
+          that.fire(Enums.events.IDLE, {pos: mousePos});          
         }
         else {
           that.selectNode(dataIndex);
@@ -838,7 +893,74 @@ ElGrapho.prototype = {
   deselectNode: function() {
     this.selectedIndex = -1;
     this.hoverDirty = true;
-  }
+  },
+
+  ////////////////////////////////////////////////////
+    // select model in boxSelection
+  selectByBox: function(mouseDownPos, mouseUpPos) {
+    // mouse area
+    let start_x = (mouseDownPos.x<mouseUpPos.x) ? mouseDownPos.x : mouseUpPos.x;
+    let start_y = (mouseDownPos.y<mouseUpPos.y) ? mouseDownPos.y : mouseUpPos.y;
+    let end_x = (mouseDownPos.x<mouseUpPos.x) ? mouseUpPos.x : mouseDownPos.x;
+    let end_y = (mouseDownPos.y<mouseUpPos.y) ? mouseUpPos.y : mouseDownPos.y;
+
+    let screenArea = this.getScreenArea();
+    let boxArea = this.getBoxArea(screenArea, {start_x, start_y, end_x, end_y});
+
+    let selectedNodes = [];
+    let nodes = this.model.nodes;
+    for ( let i=0; i<nodes.length; i++ ) {
+      let node_position = this.mapToScreenArea(nodes[i].x, nodes[i].y);
+      // match each node position to boxArea
+      if ( node_position.screen_x >= boxArea.start_x &&
+           node_position.screen_x <= boxArea.end_x &&
+           node_position.screen_y >= boxArea.start_y &&
+           node_position.screen_y <= boxArea.end_y ) {
+        
+        if (!nodes[i].hasOwnProperty('dataIndex')) {
+          nodes[i].dataIndex = i;
+        }        
+        selectedNodes.push(_.cloneDeep(nodes[i]));
+      }
+    }
+
+    return selectedNodes;
+  },
+  getBoxArea(screenArea, mouseArea) {
+    let unit_x = (screenArea.end_x - screenArea.start_x) / this.width;
+    let unit_y = (screenArea.end_y - screenArea.start_y) / this.height;
+
+    return {start_x: screenArea.start_x + (unit_x * Math.round(mouseArea.start_x)),
+            start_y: screenArea.start_y + (unit_y * Math.round(mouseArea.start_y)),
+            end_x: screenArea.start_x + (unit_x * Math.round(mouseArea.end_x)),
+            end_y: screenArea.start_y + (unit_y * Math.round(mouseArea.end_y))};
+  },
+  mapToScreenArea: function(norm_x, norm_y) {
+    let center_x = this.width / 2,
+        center_y = this.height / 2;
+    let screen_x = center_x + (center_x * norm_x),
+        screen_y = center_y - (center_y * norm_y);
+    return {screen_x: screen_x, screen_y: screen_y};
+  },
+  getScreenArea: function() {
+    let screen_starting_x =  (this.panX==0) ? 0 : -(this.panX/this.zoomX);
+    let screen_starting_y = (this.panY/this.zoomY);
+    let screen_ending_x = this.width - (this.panX/this.zoomX);
+    let screen_ending_y = this.height + (this.panY/this.zoomY);
+
+    let center_x = (screen_starting_x + screen_ending_x) / 2;
+    let center_y = (screen_starting_y + screen_ending_y) / 2;
+    
+    let offset_x = (center_x - screen_starting_x) / this.zoomX;
+    let offset_y = (center_y - screen_starting_y) / this.zoomY;
+
+    let start_x = center_x - offset_x;
+    let start_y = center_y - offset_y;
+    let end_x = center_x + offset_x;
+    let end_y = center_y + offset_y;
+
+    return {start_x: start_x, start_y: start_y, end_x: end_x, end_y: end_y};
+  }  
 };
 
 // export modules

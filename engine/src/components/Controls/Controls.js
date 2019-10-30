@@ -4,6 +4,7 @@ const moveIcon = require('../../../dist/icons/moveIcon.svg');
 const selectIcon = require('../../../dist/icons/selectIcon.svg');
 const boxZoomIcon = require('../../../dist/icons/boxZoomIcon.svg');
 const resetIcon = require('../../../dist/icons/resetIcon.svg');
+const cropIcon = require('../../../dist/icons/cropIcon.svg');
 
 const Controls = function(config) {
   this.graph = config.graph;
@@ -17,17 +18,21 @@ const Controls = function(config) {
     icon: selectIcon,
     evtName: 'select'
   });
-  this.boxZoomIcon = this.addButton({
-    icon: boxZoomIcon,
-    evtName: 'box-zoom'
-  });
   this.panButton = this.addButton({
     icon: moveIcon,
     evtName: 'pan'
   });
+  this.cropButton = this.addButton({
+    icon: cropIcon,
+    evtName: 'crop'
+  });  
   this.resetButton = this.addButton({
     icon: resetIcon,
     evtName: 'reset'
+  });
+  this.boxZoomIcon = this.addButton({
+    icon: boxZoomIcon,
+    evtName: 'box-zoom'
   });
   this.zoomInButton = this.addButton({
     icon: zoomInIcon,
