@@ -916,11 +916,12 @@ ElGrapho.prototype = {
            node_position.screen_x <= boxArea.end_x &&
            node_position.screen_y >= boxArea.start_y &&
            node_position.screen_y <= boxArea.end_y ) {
-        
-        if (!nodes[i].hasOwnProperty('dataIndex')) {
-          nodes[i].dataIndex = i;
-        }        
-        selectedNodes.push(_.cloneDeep(nodes[i]));
+        // push to selected nodes
+        let clone = _.cloneDeep(nodes[i]);
+        clone._x = node_position.screen_x;
+        clone._y = node_position.screen_y;
+        if( !clone.hasOwnProperty('_index') ) clone._index = i;
+        selectedNodes.push(clone);
       }
     }
 
