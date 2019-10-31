@@ -22,6 +22,10 @@
     cursor: zoom-in;
   }
 
+  &.el-grapho-box-crop-interaction-mode {
+    cursor: grab;
+  }
+
   &.el-grapho-dark-mode {
     background-color: black;
   }

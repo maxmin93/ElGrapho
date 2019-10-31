@@ -79,5 +79,19 @@
   }
 }
 
+// modified by maxmin93 (2019-10-31)
+.el-grapho-wrapper.el-grapho-crop-interaction-mode {
+  cursor: grab;
+
+  .el-grapho-controls {
+    .el-grapho-crop-control {
+      border-color: #119fe0;
+
+      path, polygon {
+        fill: #119fe0;
+      }
+    }
+  }
+}
 
 
