@@ -66,10 +66,10 @@ void main() {
 
   if (!isFocused) {
     if (darkMode) {
-      vVertexColor = vec4(60.0/255.0, 60.0/255.0, 60.0/255.0, globalAlpha);  
+      vVertexColor = vec4(60.0/255.0, 60.0/255.0, 60.0/255.0, globalAlpha);     // 3C3C3C : darkGray
     }
     else {
-      vVertexColor = vec4(220.0/255.0, 220.0/255.0, 220.0/255.0, globalAlpha);
+      vVertexColor = vec4(220.0/255.0, 220.0/255.0, 220.0/255.0, globalAlpha);  // DCDCDC : brightGray
     }
   }
   else if (validColor == 0.0) {
