@@ -13,6 +13,8 @@ uniform float focusedGroup;
 uniform float zoom;
 uniform float globalAlpha; // 0..1
 uniform bool darkMode;
+// modified by maxmin93 (2019-11-04)
+uniform float devicePixelRatio;
 
 varying vec4 vVertexColor;
 
@@ -60,10 +62,10 @@ void main() {
   gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
 
   if (magicZoom) {
-    gl_PointSize = MAX_NODE_SIZE;
+    gl_PointSize = MAX_NODE_SIZE * devicePixelRatio;
   }
   else {
-    gl_PointSize = nodeSize * MAX_NODE_SIZE * zoom;
+    gl_PointSize = nodeSize * MAX_NODE_SIZE * zoom * devicePixelRatio;
   }
 
   float validColor = mod(aVertexColor, 40.0);   // 8.0);

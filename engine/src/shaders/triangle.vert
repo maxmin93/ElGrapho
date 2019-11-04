@@ -13,8 +13,10 @@ uniform float edgeSize; // 0..1
 uniform float zoom;
 uniform float globalAlpha; // 0..1
 uniform bool darkMode;
+// modified by maxmin93 (2019-11-04)
+uniform float devicePixelRatio;
 
-const float MAX_NODE_SIZE = 16.0;
+const float MAX_NODE_SIZE = 20.0;
 const float PI = 3.1415926535897932384626433832795;
 
 varying vec4 vVertexColor;

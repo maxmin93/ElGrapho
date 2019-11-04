@@ -305,12 +305,16 @@ ElGrapho.prototype = {
       // render
       let scene = this.hoverLayer.scene;
       let context = scene.context;
+      // modified by maxmin93 (2019-11-04)
+      // ** set the size of the drawingBuffer
+      // https://www.khronos.org/webgl/wiki/HandlingHighDPI
+      // let devicePixelRatio = window.devicePixelRatio || 1;
 
 
       context.save();
       context.translate(this.width/2, this.height/2);
       context.scale(scale, scale);
-      
+
 
       let node, x, y;
 
@@ -322,16 +326,17 @@ ElGrapho.prototype = {
 
         context.save();
         if (this.darkMode) {
-          //context.fillStyle = 'rgba(255, 255, 255, 0.4)';   
+          //context.fillStyle = 'rgba(255, 255, 255, 0.4)';
           context.strokeStyle = 'white';
         }
         else {
-          //context.fillStyle = 'rgba(255, 255, 255, 0.4)';      
+          //context.fillStyle = 'rgba(255, 255, 255, 0.4)';
           context.strokeStyle = 'black';
         }
 
         context.lineWidth = 2;
         context.beginPath();
+        // context.arc(x, y, 10*devicePixelRatio, 0, 2*Math.PI, false);
         context.arc(x, y, 10, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
@@ -348,11 +353,12 @@ ElGrapho.prototype = {
           context.strokeStyle = 'white';
         }
         else {
-          context.strokeStyle = 'black';      
+          context.strokeStyle = 'black';
         }
 
         context.lineWidth = 3;
         context.beginPath();
+        // context.arc(x, y, 10*devicePixelRatio, 0, 2*Math.PI, false);
         context.arc(x, y, 10, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();

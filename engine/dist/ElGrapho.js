@@ -307,7 +307,7 @@ uniform float zoom;
 
 varying vec4 vVertexColor;
 
-const float MAX_NODE_SIZE = 16.0;
+const float MAX_NODE_SIZE = 20.0;
 
 // unsigned rIntValue = (u_color / 256 / 256) % 256;
 // unsigned gIntValue = (u_color / 256      ) % 256;
@@ -328,7 +328,7 @@ void main() {
   gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
 
   if (magicZoom) {
-    gl_PointSize = MAX_NODE_SIZE; 
+    gl_PointSize = MAX_NODE_SIZE;
   }
   else {
     float size = nodeSize * MAX_NODE_SIZE * zoom;
@@ -399,6 +399,8 @@ uniform float focusedGroup;
 uniform float zoom;
 uniform float globalAlpha; // 0..1
 uniform bool darkMode;
+// modified by maxmin93 (2019-11-04)
+uniform float devicePixelRatio;
 
 varying vec4 vVertexColor;
 
@@ -446,10 +448,10 @@ void main() {
   gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
 
   if (magicZoom) {
-    gl_PointSize = MAX_NODE_SIZE;
+    gl_PointSize = MAX_NODE_SIZE * devicePixelRatio;
   }
   else {
-    gl_PointSize = nodeSize * MAX_NODE_SIZE * zoom;
+    gl_PointSize = nodeSize * MAX_NODE_SIZE * zoom * devicePixelRatio;
   }
 
   float validColor = mod(aVertexColor, 40.0);   // 8.0);
@@ -637,18 +639,20 @@ uniform float focusedGroup;
 uniform int hoverNode;
 uniform float zoom;
 uniform bool darkMode;
+// modified by maxmin93 (2019-11-04)
+uniform float devicePixelRatio;
 
 varying vec4 vVertexColor;
 
 const float POINT_STROKE_WIDTH_FACTOR = 1.5;
-const float MAX_NODE_SIZE = 16.0;
+const float MAX_NODE_SIZE = 20.0;
 
 void main() {
   gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
   //gl_Position.z = 0.0;
 
   if (magicZoom) {
-    gl_PointSize = MAX_NODE_SIZE * POINT_STROKE_WIDTH_FACTOR; 
+    gl_PointSize = MAX_NODE_SIZE * POINT_STROKE_WIDTH_FACTOR;
   }
   else {
     gl_PointSize = nodeSize * MAX_NODE_SIZE * zoom * POINT_STROKE_WIDTH_FACTOR;
@@ -725,8 +729,10 @@ uniform float edgeSize; // 0..1
 uniform float zoom;
 uniform float globalAlpha; // 0..1
 uniform bool darkMode;
+// modified by maxmin93 (2019-11-04)
+uniform float devicePixelRatio;
 
-const float MAX_NODE_SIZE = 16.0;
+const float MAX_NODE_SIZE = 20.0;
 const float PI = 3.1415926535897932384626433832795;
 
 varying vec4 vVertexColor;
@@ -1331,12 +1337,16 @@ ElGrapho.prototype = {
       // render
       let scene = this.hoverLayer.scene;
       let context = scene.context;
+      // modified by maxmin93 (2019-11-04)
+      // ** set the size of the drawingBuffer
+      // https://www.khronos.org/webgl/wiki/HandlingHighDPI
+      // let devicePixelRatio = window.devicePixelRatio || 1;
 
 
       context.save();
       context.translate(this.width/2, this.height/2);
       context.scale(scale, scale);
-      
+
 
       let node, x, y;
 
@@ -1348,16 +1358,17 @@ ElGrapho.prototype = {
 
         context.save();
         if (this.darkMode) {
-          //context.fillStyle = 'rgba(255, 255, 255, 0.4)';   
+          //context.fillStyle = 'rgba(255, 255, 255, 0.4)';
           context.strokeStyle = 'white';
         }
         else {
-          //context.fillStyle = 'rgba(255, 255, 255, 0.4)';      
+          //context.fillStyle = 'rgba(255, 255, 255, 0.4)';
           context.strokeStyle = 'black';
         }
 
         context.lineWidth = 2;
         context.beginPath();
+        // context.arc(x, y, 10*devicePixelRatio, 0, 2*Math.PI, false);
         context.arc(x, y, 10, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
@@ -1374,11 +1385,12 @@ ElGrapho.prototype = {
           context.strokeStyle = 'white';
         }
         else {
-          context.strokeStyle = 'black';      
+          context.strokeStyle = 'black';
         }
 
         context.lineWidth = 3;
         context.beginPath();
+        // context.arc(x, y, 10*devicePixelRatio, 0, 2*Math.PI, false);
         context.arc(x, y, 10, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
@@ -2652,7 +2664,8 @@ WebGL.prototype = {
     shaderProgram.zoom = gl.getUniformLocation(shaderProgram, 'zoom');
     shaderProgram.globalAlpha = gl.getUniformLocation(shaderProgram, 'globalAlpha');
     shaderProgram.darkMode = gl.getUniformLocation(shaderProgram, 'darkMode');
-    
+    // modified by maxmin93 (2019-11-04)
+    shaderProgram.devicePixelRatio = gl.getUniformLocation(shaderProgram, 'devicePixelRatio');
 
     return shaderProgram;
   },
@@ -2688,6 +2701,8 @@ WebGL.prototype = {
     shaderProgram.hoverNode = gl.getUniformLocation(shaderProgram, 'hoverNode');
     shaderProgram.zoom = gl.getUniformLocation(shaderProgram, 'zoom');
     shaderProgram.darkMode = gl.getUniformLocation(shaderProgram, 'darkMode');
+    // modified by maxmin93 (2019-11-04)
+    shaderProgram.devicePixelRatio = gl.getUniformLocation(shaderProgram, 'devicePixelRatio');
 
     return shaderProgram;
   },
@@ -2763,6 +2778,8 @@ WebGL.prototype = {
     shaderProgram.zoom = gl.getUniformLocation(shaderProgram, 'zoom');
     shaderProgram.globalAlpha = gl.getUniformLocation(shaderProgram, 'globalAlpha');
     shaderProgram.darkMode = gl.getUniformLocation(shaderProgram, 'darkMode');
+    // modified by maxmin93 (2019-11-04)
+    shaderProgram.devicePixelRatio = gl.getUniformLocation(shaderProgram, 'devicePixelRatio');
 
     return shaderProgram;
   },
@@ -2817,7 +2834,8 @@ WebGL.prototype = {
     let shaderProgram = this.getPointShaderProgram();
     let buffers = this.buffers.points;
 
-    
+    // set the size of the drawingBuffer
+    let devicePixelRatio = window.devicePixelRatio || 1;
 
     gl.uniformMatrix4fv(shaderProgram.projectionMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.modelViewMatrixUniform, false, modelViewMatrix);
@@ -2827,6 +2845,8 @@ WebGL.prototype = {
     gl.uniform1f(shaderProgram.zoom, zoom);
     gl.uniform1f(shaderProgram.globalAlpha, 1-glowBlend);
     gl.uniform1i(shaderProgram.darkMode, darkMode);
+    // modified by maxmin93 (2019-11-04)
+    gl.uniform1f(shaderProgram.devicePixelRatio, devicePixelRatio);
 
     this.bindBuffer(buffers.positions, shaderProgram.vertexPositionAttribute, gl);
     this.bindBuffer(buffers.colors, shaderProgram.vertexColorAttribute, gl);
@@ -2839,6 +2859,9 @@ WebGL.prototype = {
     let shaderProgram = this.getPointStrokeShaderProgram();
     let buffers = this.buffers.points;
 
+    // set the size of the drawingBuffer
+    let devicePixelRatio = window.devicePixelRatio || 1;
+
     gl.uniformMatrix4fv(shaderProgram.projectionMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.modelViewMatrixUniform, false, modelViewMatrix);
     gl.uniform1i(shaderProgram.magicZoom, magicZoom);
@@ -2847,6 +2870,8 @@ WebGL.prototype = {
     gl.uniform1i(shaderProgram.hoverNode, hoverNode);
     gl.uniform1f(shaderProgram.zoom, zoom);
     gl.uniform1i(shaderProgram.darkMode, darkMode);
+    // modified by maxmin93 (2019-11-04)
+    gl.uniform1f(shaderProgram.devicePixelRatio, devicePixelRatio);
 
     this.bindBuffer(buffers.positions, shaderProgram.vertexPositionAttribute, gl);
     this.bindBuffer(buffers.colors, shaderProgram.vertexColorAttribute, gl);
@@ -2859,6 +2884,9 @@ WebGL.prototype = {
     let shaderProgram = this.getTriangleShaderProgram();
     let buffers = this.buffers.triangles;
 
+    // set the size of the drawingBuffer
+    let devicePixelRatio = window.devicePixelRatio || 1;
+
     gl.uniformMatrix4fv(shaderProgram.projectionMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.modelViewMatrixUniform, false, modelViewMatrix);
     gl.uniform1i(shaderProgram.magicZoom, magicZoom);
@@ -2868,6 +2896,8 @@ WebGL.prototype = {
     gl.uniform1f(shaderProgram.zoom, zoom);
     gl.uniform1f(shaderProgram.globalAlpha, 1-glowBlend);
     gl.uniform1i(shaderProgram.darkMode, darkMode);
+    // modified by maxmin93 (2019-11-04)
+    gl.uniform1f(shaderProgram.devicePixelRatio, devicePixelRatio);
 
     this.bindBuffer(buffers.positions, shaderProgram.vertexPositionAttribute, gl);
     this.bindBuffer(buffers.normals, shaderProgram.normalsAttribute, gl);

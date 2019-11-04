@@ -11,18 +11,20 @@ uniform float focusedGroup;
 uniform int hoverNode;
 uniform float zoom;
 uniform bool darkMode;
+// modified by maxmin93 (2019-11-04)
+uniform float devicePixelRatio;
 
 varying vec4 vVertexColor;
 
 const float POINT_STROKE_WIDTH_FACTOR = 1.5;
-const float MAX_NODE_SIZE = 16.0;
+const float MAX_NODE_SIZE = 20.0;
 
 void main() {
   gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
   //gl_Position.z = 0.0;
 
   if (magicZoom) {
-    gl_PointSize = MAX_NODE_SIZE * POINT_STROKE_WIDTH_FACTOR; 
+    gl_PointSize = MAX_NODE_SIZE * POINT_STROKE_WIDTH_FACTOR;
   }
   else {
     gl_PointSize = nodeSize * MAX_NODE_SIZE * zoom * POINT_STROKE_WIDTH_FACTOR;

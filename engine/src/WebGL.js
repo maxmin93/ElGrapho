@@ -68,7 +68,8 @@ WebGL.prototype = {
     shaderProgram.zoom = gl.getUniformLocation(shaderProgram, 'zoom');
     shaderProgram.globalAlpha = gl.getUniformLocation(shaderProgram, 'globalAlpha');
     shaderProgram.darkMode = gl.getUniformLocation(shaderProgram, 'darkMode');
-    
+    // modified by maxmin93 (2019-11-04)
+    shaderProgram.devicePixelRatio = gl.getUniformLocation(shaderProgram, 'devicePixelRatio');
 
     return shaderProgram;
   },
@@ -104,6 +105,8 @@ WebGL.prototype = {
     shaderProgram.hoverNode = gl.getUniformLocation(shaderProgram, 'hoverNode');
     shaderProgram.zoom = gl.getUniformLocation(shaderProgram, 'zoom');
     shaderProgram.darkMode = gl.getUniformLocation(shaderProgram, 'darkMode');
+    // modified by maxmin93 (2019-11-04)
+    shaderProgram.devicePixelRatio = gl.getUniformLocation(shaderProgram, 'devicePixelRatio');
 
     return shaderProgram;
   },
@@ -179,6 +182,8 @@ WebGL.prototype = {
     shaderProgram.zoom = gl.getUniformLocation(shaderProgram, 'zoom');
     shaderProgram.globalAlpha = gl.getUniformLocation(shaderProgram, 'globalAlpha');
     shaderProgram.darkMode = gl.getUniformLocation(shaderProgram, 'darkMode');
+    // modified by maxmin93 (2019-11-04)
+    shaderProgram.devicePixelRatio = gl.getUniformLocation(shaderProgram, 'devicePixelRatio');
 
     return shaderProgram;
   },
@@ -233,7 +238,8 @@ WebGL.prototype = {
     let shaderProgram = this.getPointShaderProgram();
     let buffers = this.buffers.points;
 
-    
+    // set the size of the drawingBuffer
+    let devicePixelRatio = window.devicePixelRatio || 1;
 
     gl.uniformMatrix4fv(shaderProgram.projectionMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.modelViewMatrixUniform, false, modelViewMatrix);
@@ -243,6 +249,8 @@ WebGL.prototype = {
     gl.uniform1f(shaderProgram.zoom, zoom);
     gl.uniform1f(shaderProgram.globalAlpha, 1-glowBlend);
     gl.uniform1i(shaderProgram.darkMode, darkMode);
+    // modified by maxmin93 (2019-11-04)
+    gl.uniform1f(shaderProgram.devicePixelRatio, devicePixelRatio);
 
     this.bindBuffer(buffers.positions, shaderProgram.vertexPositionAttribute, gl);
     this.bindBuffer(buffers.colors, shaderProgram.vertexColorAttribute, gl);
@@ -255,6 +263,9 @@ WebGL.prototype = {
     let shaderProgram = this.getPointStrokeShaderProgram();
     let buffers = this.buffers.points;
 
+    // set the size of the drawingBuffer
+    let devicePixelRatio = window.devicePixelRatio || 1;
+
     gl.uniformMatrix4fv(shaderProgram.projectionMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.modelViewMatrixUniform, false, modelViewMatrix);
     gl.uniform1i(shaderProgram.magicZoom, magicZoom);
@@ -263,6 +274,8 @@ WebGL.prototype = {
     gl.uniform1i(shaderProgram.hoverNode, hoverNode);
     gl.uniform1f(shaderProgram.zoom, zoom);
     gl.uniform1i(shaderProgram.darkMode, darkMode);
+    // modified by maxmin93 (2019-11-04)
+    gl.uniform1f(shaderProgram.devicePixelRatio, devicePixelRatio);
 
     this.bindBuffer(buffers.positions, shaderProgram.vertexPositionAttribute, gl);
     this.bindBuffer(buffers.colors, shaderProgram.vertexColorAttribute, gl);
@@ -275,6 +288,9 @@ WebGL.prototype = {
     let shaderProgram = this.getTriangleShaderProgram();
     let buffers = this.buffers.triangles;
 
+    // set the size of the drawingBuffer
+    let devicePixelRatio = window.devicePixelRatio || 1;
+
     gl.uniformMatrix4fv(shaderProgram.projectionMatrixUniform, false, projectionMatrix);
     gl.uniformMatrix4fv(shaderProgram.modelViewMatrixUniform, false, modelViewMatrix);
     gl.uniform1i(shaderProgram.magicZoom, magicZoom);
@@ -284,6 +300,8 @@ WebGL.prototype = {
     gl.uniform1f(shaderProgram.zoom, zoom);
     gl.uniform1f(shaderProgram.globalAlpha, 1-glowBlend);
     gl.uniform1i(shaderProgram.darkMode, darkMode);
+    // modified by maxmin93 (2019-11-04)
+    gl.uniform1f(shaderProgram.devicePixelRatio, devicePixelRatio);
 
     this.bindBuffer(buffers.positions, shaderProgram.vertexPositionAttribute, gl);
     this.bindBuffer(buffers.normals, shaderProgram.normalsAttribute, gl);
