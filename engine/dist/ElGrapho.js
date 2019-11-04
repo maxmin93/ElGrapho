@@ -1,7 +1,7 @@
 /*
  * El Grapho v2.4.0
  * A high performance WebGL graph data visualization engine
- * Release Date: 11-03-2019
+ * Release Date: 11-04-2019
  * https://github.com/ericdrowell/elgrapho
  * Licensed under the MIT or GPL Version 2 licenses.
  *
@@ -1358,7 +1358,7 @@ ElGrapho.prototype = {
 
         context.lineWidth = 2;
         context.beginPath();
-        context.arc(x, y, 5, 0, 2*Math.PI, false);
+        context.arc(x, y, 10, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
       }
@@ -1379,7 +1379,7 @@ ElGrapho.prototype = {
 
         context.lineWidth = 3;
         context.beginPath();
-        context.arc(x, y, 5, 0, 2*Math.PI, false);
+        context.arc(x, y, 10, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
       }
