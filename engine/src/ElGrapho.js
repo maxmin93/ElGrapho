@@ -332,7 +332,7 @@ ElGrapho.prototype = {
 
         context.lineWidth = 2;
         context.beginPath();
-        context.arc(x, y, 5, 0, 2*Math.PI, false);
+        context.arc(x, y, 10, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
       }
@@ -353,7 +353,7 @@ ElGrapho.prototype = {
 
         context.lineWidth = 3;
         context.beginPath();
-        context.arc(x, y, 5, 0, 2*Math.PI, false);
+        context.arc(x, y, 10, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
       }
