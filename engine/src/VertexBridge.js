@@ -13,7 +13,7 @@ const VertexBridge = {
     //let halfHeight = height/2;
     let colors = new Float32Array(nodes.length);
 
-    
+
     let positionCounter = 0;
     nodes.forEach(function(node, n) {
       // convert normalized x and y to pixel values
@@ -139,14 +139,14 @@ const VertexBridge = {
 
         trianglePositions[trianglePositionsIndex++] = x1;
         trianglePositions[trianglePositionsIndex++] = y1;
-        triangleNormals[triangleNormalsIndex++] = -1 * arrowOffsetX + normal.x * ARROW_WIDTH_MULTIPLIER;
-        triangleNormals[triangleNormalsIndex++] = -1 * arrowOffsetY + normal.y * -1 * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -5 * arrowOffsetX + normal.x * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -5 * arrowOffsetY + normal.y * -3 * ARROW_WIDTH_MULTIPLIER;
         triangleColors[triangleColorsIndex++] = color1;
 
         trianglePositions[trianglePositionsIndex++] = x1;
         trianglePositions[trianglePositionsIndex++] = y1;
-        triangleNormals[triangleNormalsIndex++] = -1 * arrowOffsetX + normal.x * -1 * ARROW_WIDTH_MULTIPLIER;
-        triangleNormals[triangleNormalsIndex++] = -1 * arrowOffsetY + normal.y * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -5 * arrowOffsetX + normal.x * -3 * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -5 * arrowOffsetY + normal.y * ARROW_WIDTH_MULTIPLIER;
         triangleColors[triangleColorsIndex++] = color1;
       }
     }
