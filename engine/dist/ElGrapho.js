@@ -1,7 +1,7 @@
 /*
  * El Grapho v2.4.0
  * A high performance WebGL graph data visualization engine
- * Release Date: 11-04-2019
+ * Release Date: 11-05-2019
  * https://github.com/ericdrowell/elgrapho
  * Licensed under the MIT or GPL Version 2 licenses.
  *
@@ -1325,6 +1325,35 @@ ElGrapho.prototype = {
 
     labelsContext.restore();
   },
+  // modified by maxmin93 (2019-11-05)
+  // ** not working!
+  selectNodes(arrIndex){
+    let context = this.hoverLayer.scene.context;
+    let scale = this.zoomX < 1 || this.zoomY < 1 ? Math.min(this.zoomX, this.zoomY) : 1;
+    let halfWidth = this.width/2;
+    let halfHeight = this.height/2;
+
+    console.log('selectNodes', arrIndex, context, scale, halfWidth, halfHeight);
+    for(let i=0; i<arrIndex.length; i++){
+      let node = this.model.nodes[arrIndex[i]];
+      let x = (node.x * halfWidth * this.zoomX + this.panX) / scale;
+      let y = (node.y * -1 * halfHeight * this.zoomY - this.panY) / scale;
+
+      context.save();
+      if (this.darkMode) {
+        context.strokeStyle = 'white';
+      } else {
+        context.strokeStyle = 'black';
+      }
+      context.lineWidth = 3;
+
+      console.log('renderRing', node, x, y, this.darkMode);
+      context.beginPath();
+      context.arc(x, y, 10, 0, 2*Math.PI, false);
+      context.stroke();
+      context.restore();
+    }
+  },
   renderRings: function(scale) {
     let hoverIndex = this.hoveredDataIndex;
     let selectedIndex = this.selectedIndex;
@@ -1337,11 +1366,6 @@ ElGrapho.prototype = {
       // render
       let scene = this.hoverLayer.scene;
       let context = scene.context;
-      // modified by maxmin93 (2019-11-04)
-      // ** set the size of the drawingBuffer
-      // https://www.khronos.org/webgl/wiki/HandlingHighDPI
-      // let devicePixelRatio = window.devicePixelRatio || 1;
-
 
       context.save();
       context.translate(this.width/2, this.height/2);
