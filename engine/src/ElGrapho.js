@@ -317,7 +317,7 @@ ElGrapho.prototype = {
 
       console.log('renderRing', node, x, y, this.darkMode);
       context.beginPath();
-      context.arc(x, y, 10, 0, 2*Math.PI, false);
+      context.arc(x, y, 8, 0, 2*Math.PI, false);
       context.stroke();
       context.restore();
     }
@@ -360,8 +360,7 @@ ElGrapho.prototype = {
 
         context.lineWidth = 2;
         context.beginPath();
-        // context.arc(x, y, 10*devicePixelRatio, 0, 2*Math.PI, false);
-        context.arc(x, y, 10, 0, 2*Math.PI, false);
+        context.arc(x, y, 8, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
       }
@@ -382,8 +381,7 @@ ElGrapho.prototype = {
 
         context.lineWidth = 3;
         context.beginPath();
-        // context.arc(x, y, 10*devicePixelRatio, 0, 2*Math.PI, false);
-        context.arc(x, y, 10, 0, 2*Math.PI, false);
+        context.arc(x, y, 8, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
       }

@@ -11,7 +11,7 @@ uniform float zoom;
 
 varying vec4 vVertexColor;
 
-const float MAX_NODE_SIZE = 20.0;
+const float MAX_NODE_SIZE = 16.0;
 
 // unsigned rIntValue = (u_color / 256 / 256) % 256;
 // unsigned gIntValue = (u_color / 256      ) % 256;

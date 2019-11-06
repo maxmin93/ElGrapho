@@ -139,14 +139,14 @@ const VertexBridge = {
 
         trianglePositions[trianglePositionsIndex++] = x1;
         trianglePositions[trianglePositionsIndex++] = y1;
-        triangleNormals[triangleNormalsIndex++] = -5 * arrowOffsetX + normal.x * ARROW_WIDTH_MULTIPLIER;
-        triangleNormals[triangleNormalsIndex++] = -5 * arrowOffsetY + normal.y * -3 * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -4 * arrowOffsetX + normal.x * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -4 * arrowOffsetY + normal.y * -3 * ARROW_WIDTH_MULTIPLIER;
         triangleColors[triangleColorsIndex++] = color1;
 
         trianglePositions[trianglePositionsIndex++] = x1;
         trianglePositions[trianglePositionsIndex++] = y1;
-        triangleNormals[triangleNormalsIndex++] = -5 * arrowOffsetX + normal.x * -3 * ARROW_WIDTH_MULTIPLIER;
-        triangleNormals[triangleNormalsIndex++] = -5 * arrowOffsetY + normal.y * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -4 * arrowOffsetX + normal.x * -3 * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -4 * arrowOffsetY + normal.y * ARROW_WIDTH_MULTIPLIER;
         triangleColors[triangleColorsIndex++] = color1;
       }
     }

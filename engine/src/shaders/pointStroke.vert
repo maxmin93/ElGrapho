@@ -17,7 +17,7 @@ uniform float devicePixelRatio;
 varying vec4 vVertexColor;
 
 const float POINT_STROKE_WIDTH_FACTOR = 1.5;
-const float MAX_NODE_SIZE = 20.0;
+const float MAX_NODE_SIZE = 16.0;
 
 void main() {
   gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;

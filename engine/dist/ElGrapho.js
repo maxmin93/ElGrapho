@@ -1,7 +1,7 @@
 /*
  * El Grapho v2.4.0
  * A high performance WebGL graph data visualization engine
- * Release Date: 11-05-2019
+ * Release Date: 11-06-2019
  * https://github.com/ericdrowell/elgrapho
  * Licensed under the MIT or GPL Version 2 licenses.
  *
@@ -307,7 +307,7 @@ uniform float zoom;
 
 varying vec4 vVertexColor;
 
-const float MAX_NODE_SIZE = 20.0;
+const float MAX_NODE_SIZE = 16.0;
 
 // unsigned rIntValue = (u_color / 256 / 256) % 256;
 // unsigned gIntValue = (u_color / 256      ) % 256;
@@ -404,7 +404,7 @@ uniform float devicePixelRatio;
 
 varying vec4 vVertexColor;
 
-const float MAX_NODE_SIZE = 20.0;   //16.0;
+const float MAX_NODE_SIZE = 16.0;
 
 /*
 // https://www.rapidtables.com/convert/number/hex-to-decimal.html
@@ -645,7 +645,7 @@ uniform float devicePixelRatio;
 varying vec4 vVertexColor;
 
 const float POINT_STROKE_WIDTH_FACTOR = 1.5;
-const float MAX_NODE_SIZE = 20.0;
+const float MAX_NODE_SIZE = 16.0;
 
 void main() {
   gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
@@ -732,7 +732,7 @@ uniform bool darkMode;
 // modified by maxmin93 (2019-11-04)
 uniform float devicePixelRatio;
 
-const float MAX_NODE_SIZE = 20.0;
+const float MAX_NODE_SIZE = 16.0;
 const float PI = 3.1415926535897932384626433832795;
 
 varying vec4 vVertexColor;
@@ -1349,7 +1349,7 @@ ElGrapho.prototype = {
 
       console.log('renderRing', node, x, y, this.darkMode);
       context.beginPath();
-      context.arc(x, y, 10, 0, 2*Math.PI, false);
+      context.arc(x, y, 8, 0, 2*Math.PI, false);
       context.stroke();
       context.restore();
     }
@@ -1392,8 +1392,7 @@ ElGrapho.prototype = {
 
         context.lineWidth = 2;
         context.beginPath();
-        // context.arc(x, y, 10*devicePixelRatio, 0, 2*Math.PI, false);
-        context.arc(x, y, 10, 0, 2*Math.PI, false);
+        context.arc(x, y, 8, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
       }
@@ -1414,8 +1413,7 @@ ElGrapho.prototype = {
 
         context.lineWidth = 3;
         context.beginPath();
-        // context.arc(x, y, 10*devicePixelRatio, 0, 2*Math.PI, false);
-        context.arc(x, y, 10, 0, 2*Math.PI, false);
+        context.arc(x, y, 8, 0, 2*Math.PI, false);
         context.stroke();
         context.restore();
       }
@@ -2451,7 +2449,7 @@ const VertexBridge = {
     //let halfHeight = height/2;
     let colors = new Float32Array(nodes.length);
 
-    
+
     let positionCounter = 0;
     nodes.forEach(function(node, n) {
       // convert normalized x and y to pixel values
@@ -2577,14 +2575,14 @@ const VertexBridge = {
 
         trianglePositions[trianglePositionsIndex++] = x1;
         trianglePositions[trianglePositionsIndex++] = y1;
-        triangleNormals[triangleNormalsIndex++] = -1 * arrowOffsetX + normal.x * ARROW_WIDTH_MULTIPLIER;
-        triangleNormals[triangleNormalsIndex++] = -1 * arrowOffsetY + normal.y * -1 * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -4 * arrowOffsetX + normal.x * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -4 * arrowOffsetY + normal.y * -3 * ARROW_WIDTH_MULTIPLIER;
         triangleColors[triangleColorsIndex++] = color1;
 
         trianglePositions[trianglePositionsIndex++] = x1;
         trianglePositions[trianglePositionsIndex++] = y1;
-        triangleNormals[triangleNormalsIndex++] = -1 * arrowOffsetX + normal.x * -1 * ARROW_WIDTH_MULTIPLIER;
-        triangleNormals[triangleNormalsIndex++] = -1 * arrowOffsetY + normal.y * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -4 * arrowOffsetX + normal.x * -3 * ARROW_WIDTH_MULTIPLIER;
+        triangleNormals[triangleNormalsIndex++] = -4 * arrowOffsetY + normal.y * ARROW_WIDTH_MULTIPLIER;
         triangleColors[triangleColorsIndex++] = color1;
       }
     }
