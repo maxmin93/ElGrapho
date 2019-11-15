@@ -386,17 +386,8 @@ ElGrapho.prototype = {
         context.restore();
       }
 
-
-
-
-
-      
-      
-
-
       context.restore();
-    }
-    
+    }    
   },
   setDarkMode(darkMode) {
     this.darkMode = darkMode;
@@ -700,14 +691,14 @@ ElGrapho.prototype = {
 
         let mousePos = that.getMousePosition(evt);
         let selectedNodes = that.selectByBox( that.zoomBoxAnchor, mousePos );
+        let pan = { x: viewport.width/2, y: viewport.height/2 };
 
         BoxZoom.destroy();
         that.zoomBoxAnchor = null;
 
-        // single node cannot be cropped.
-        if( selectedNodes.length > 1 ) {
+        if( selectedNodes.length > 0 ) {
           // like box selection
-          that.fire(Enums.events.NODES_CROP, { nodes: selectedNodes});
+          that.fire(Enums.events.NODES_CROP, { nodes: selectedNodes, pan: pan });
         }
       }
 
@@ -924,7 +915,9 @@ ElGrapho.prototype = {
   },
 
   ////////////////////////////////////////////////////
-    // select model in boxSelection
+  
+  // ** modified by maxmin93 (2019-11-15)
+  // select model in boxSelection
   selectByBox: function(mouseDownPos, mouseUpPos) {
     // mouse area
     let start_x = (mouseDownPos.x<mouseUpPos.x) ? mouseDownPos.x : mouseUpPos.x;
@@ -934,6 +927,7 @@ ElGrapho.prototype = {
 
     let screenArea = this.getScreenArea();
     let boxArea = this.getBoxArea(screenArea, {start_x, start_y, end_x, end_y});
+    let scale = this.zoomX < 1 || this.zoomY < 1 ? Math.min(this.zoomX, this.zoomY) : 1;
 
     let selectedNodes = [];
     let nodes = this.model.nodes;
@@ -943,11 +937,16 @@ ElGrapho.prototype = {
       if ( node_position.screen_x >= boxArea.start_x &&
            node_position.screen_x <= boxArea.end_x &&
            node_position.screen_y >= boxArea.start_y &&
-           node_position.screen_y <= boxArea.end_y ) {
+           node_position.screen_y <= boxArea.end_y 
+      ) {
+        let x = (nodes[i].x * (this.width/2) * this.zoomX + this.panX) / scale;
+        let y = (nodes[i].y * -1 * (this.height/2) * this.zoomY - this.panY) / scale;
+        // console.log(`  - node[${i}]: (${nodes[i].x}, ${nodes[i].y}) => (${x}, ${y})`);
+    
         // push to selected nodes
         let clone = _.cloneDeep(nodes[i]);
-        clone._x = node_position.screen_x;
-        clone._y = node_position.screen_y;
+        clone._x = x; // node_position.screen_x;
+        clone._y = y; // node_position.screen_y;
         if( !clone.hasOwnProperty('_index') ) clone._index = i;
         selectedNodes.push(clone);
       }
