@@ -314,7 +314,7 @@ WebGL.prototype = {
     let gl = layer.scene.context;
     let zoom = Math.min(zoomX, zoomY);
 
-    
+
 
 
     let modelViewMatrix = mat4.create();

@@ -1,12 +1,12 @@
 .el-grapho-count {
   position: absolute;
-  bottom: 3px;
-  right: 5px;
+  bottom: 1px;
+  right: 12px;
   pointer-events: none;
   font-family: monospace;
   background-color: white;
-  border-radius: 3px;
-  padding: 3px;
+  border-radius: 1px;
+  padding: 1px;
   opacity: 0.9;
 
   &::selection {

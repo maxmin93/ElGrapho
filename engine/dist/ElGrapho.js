@@ -1,7 +1,7 @@
 /*
  * El Grapho v2.4.0
  * A high performance WebGL graph data visualization engine
- * Release Date: 11-15-2019
+ * Release Date: 11-22-2019
  * https://github.com/ericdrowell/elgrapho
  * Licensed under the MIT or GPL Version 2 licenses.
  *
@@ -912,7 +912,7 @@ void main() {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = `.el-grapho-tooltip{position:fixed;background-color:white;pointer-events:none;padding:10px;border:1px solid #333;border-radius:3px;font-family:verdana;font-size:12px;user-select:none}.el-grapho-controls{position:absolute;left:0;bottom:5px;opacity:0;transition:opacity .3s ease-in-out}.el-grapho-controls button{background:white;padding:5px;cursor:pointer;outline:0;border:2px solid black;border-radius:3px;margin-right:5px}.el-grapho-controls .el-grapho-step-down-control{transform:scale(1,-1)}.el-grapho-wrapper:hover .el-grapho-controls{opacity:1}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button{background:black;border-color:white;color:white;border-color:#aaa}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button path,.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button polygon,.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button rect{fill:white}.el-grapho-wrapper.el-grapho-select-interaction-mode{cursor:default}.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control path,.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-pan-interaction-mode{cursor:move}.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control path,.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode{cursor:zoom-in}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control path,.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-crop-interaction-mode{cursor:grab}.el-grapho-wrapper.el-grapho-crop-interaction-mode .el-grapho-controls .el-grapho-crop-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-crop-interaction-mode .el-grapho-controls .el-grapho-crop-control path,.el-grapho-wrapper.el-grapho-crop-interaction-mode .el-grapho-controls .el-grapho-crop-control polygon{fill:#119fe0}.el-grapho-count{position:absolute;bottom:3px;right:5px;pointer-events:none;font-family:monospace;background-color:white;border-radius:3px;padding:3px;opacity:.9}.el-grapho-count::selection{background:transparent}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-count{background-color:black;color:white}.el-grapho-box-zoom-component{position:fixed;border:1px solid #119fe0;background-color:rgba(17,159,224,0.1);pointer-events:none}.el-grapho-loading-component{width:100%;height:100%;background-color:rgba(255,255,255,0.9);position:absolute;top:0;opacity:0;transition:opacity .3s ease-in-out;pointer-events:none}.el-grapho-loading .el-grapho-loading-component{opacity:1}.spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.spinner>div{width:18px;height:18px;background-color:#333;border-radius:100%;display:inline-block;-webkit-animation:sk-bouncedelay 1.4s infinite ease-in-out both;animation:sk-bouncedelay 1.4s infinite ease-in-out both}.spinner .bounce1{-webkit-animation-delay:-0.32s;animation-delay:-0.32s}.spinner .bounce2{-webkit-animation-delay:-0.16s;animation-delay:-0.16s}@-webkit-keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0)}40%{-webkit-transform:scale(1)}}@keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);transform:scale(1)}}.el-grapho-wrapper{display:inline-block;position:relative;background-color:white;overflow:hidden}.el-grapho-wrapper.el-grapho-select-interaction-mode{cursor:default}.el-grapho-wrapper.el-grapho-pan-interaction-mode{cursor:move}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode{cursor:zoom-in}.el-grapho-wrapper.el-grapho-box-crop-interaction-mode{cursor:grab}.el-grapho-wrapper.el-grapho-dark-mode{background-color:black}
+module.exports = `.el-grapho-tooltip{position:fixed;background-color:white;pointer-events:none;padding:10px;border:1px solid #333;border-radius:3px;font-family:verdana;font-size:12px;user-select:none}.el-grapho-controls{position:absolute;left:0;bottom:5px;opacity:0;transition:opacity .3s ease-in-out}.el-grapho-controls button{background:white;padding:5px;cursor:pointer;outline:0;border:2px solid black;border-radius:3px;margin-right:5px}.el-grapho-controls .el-grapho-step-down-control{transform:scale(1,-1)}.el-grapho-wrapper:hover .el-grapho-controls{opacity:1}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button{background:black;border-color:white;color:white;border-color:#aaa}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button path,.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button polygon,.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-controls button rect{fill:white}.el-grapho-wrapper.el-grapho-select-interaction-mode{cursor:default}.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control path,.el-grapho-wrapper.el-grapho-select-interaction-mode .el-grapho-controls .el-grapho-select-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-pan-interaction-mode{cursor:move}.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control path,.el-grapho-wrapper.el-grapho-pan-interaction-mode .el-grapho-controls .el-grapho-pan-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode{cursor:zoom-in}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control path,.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode .el-grapho-controls .el-grapho-box-zoom-control polygon{fill:#119fe0}.el-grapho-wrapper.el-grapho-crop-interaction-mode{cursor:grab}.el-grapho-wrapper.el-grapho-crop-interaction-mode .el-grapho-controls .el-grapho-crop-control{border-color:#119fe0}.el-grapho-wrapper.el-grapho-crop-interaction-mode .el-grapho-controls .el-grapho-crop-control path,.el-grapho-wrapper.el-grapho-crop-interaction-mode .el-grapho-controls .el-grapho-crop-control polygon{fill:#119fe0}.el-grapho-count{position:absolute;bottom:1px;right:12px;pointer-events:none;font-family:monospace;background-color:white;border-radius:1px;padding:1px;opacity:.9}.el-grapho-count::selection{background:transparent}.el-grapho-wrapper.el-grapho-dark-mode .el-grapho-count{background-color:black;color:white}.el-grapho-box-zoom-component{position:fixed;border:1px solid #119fe0;background-color:rgba(17,159,224,0.1);pointer-events:none}.el-grapho-loading-component{width:100%;height:100%;background-color:rgba(255,255,255,0.9);position:absolute;top:0;opacity:0;transition:opacity .3s ease-in-out;pointer-events:none}.el-grapho-loading .el-grapho-loading-component{opacity:1}.spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.spinner>div{width:18px;height:18px;background-color:#333;border-radius:100%;display:inline-block;-webkit-animation:sk-bouncedelay 1.4s infinite ease-in-out both;animation:sk-bouncedelay 1.4s infinite ease-in-out both}.spinner .bounce1{-webkit-animation-delay:-0.32s;animation-delay:-0.32s}.spinner .bounce2{-webkit-animation-delay:-0.16s;animation-delay:-0.16s}@-webkit-keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0)}40%{-webkit-transform:scale(1)}}@keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);transform:scale(1)}}.el-grapho-wrapper{display:inline-block;position:relative;background-color:white;overflow:hidden}.el-grapho-wrapper.el-grapho-select-interaction-mode{cursor:default}.el-grapho-wrapper.el-grapho-pan-interaction-mode{cursor:move}.el-grapho-wrapper.el-grapho-box-zoom-interaction-mode{cursor:zoom-in}.el-grapho-wrapper.el-grapho-box-crop-interaction-mode{cursor:grab}.el-grapho-wrapper.el-grapho-dark-mode{background-color:black}
 `;
 
 /***/ }),
@@ -1090,7 +1090,7 @@ ElGrapho.prototype = {
     this.events = new Events();
     this.model = config.model;
 
-    
+
 
     this.fitToViewport(false);
 
@@ -1221,13 +1221,13 @@ ElGrapho.prototype = {
     // normalized width is 2 and height is 2.  Thus, to give a little padding,
     // using 1.9
     // ** modified by maxmin93 (2019-10-30)
-    //    graph margin ratio : 1.9 ==> 1.7
+    //    graph margin ratio : 1.9 ==> 1.6
     let diffX = maxX - minX;
     let diffY = maxY - minY;
     let xOffset = minX + diffX / 2;
     let yOffset = minY + diffY / 2;
-    let xFactor = 1.7 / diffX;
-    let yFactor = 1.7 / diffY;
+    let xFactor = 1.6 / diffX;
+    let yFactor = 1.6 / diffY;
 
     // we want to adjust the x and y equally to preserve ratio
 
@@ -2931,7 +2931,7 @@ WebGL.prototype = {
     let gl = layer.scene.context;
     let zoom = Math.min(zoomX, zoomY);
 
-    
+
 
 
     let modelViewMatrix = mat4.create();

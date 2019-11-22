@@ -58,7 +58,7 @@ ElGrapho.prototype = {
     this.events = new Events();
     this.model = config.model;
 
-    
+
 
     this.fitToViewport(false);
 
@@ -189,13 +189,13 @@ ElGrapho.prototype = {
     // normalized width is 2 and height is 2.  Thus, to give a little padding,
     // using 1.9
     // ** modified by maxmin93 (2019-10-30)
-    //    graph margin ratio : 1.9 ==> 1.7
+    //    graph margin ratio : 1.9 ==> 1.6
     let diffX = maxX - minX;
     let diffY = maxY - minY;
     let xOffset = minX + diffX / 2;
     let yOffset = minY + diffY / 2;
-    let xFactor = 1.7 / diffX;
-    let yFactor = 1.7 / diffY;
+    let xFactor = 1.6 / diffX;
+    let yFactor = 1.6 / diffY;
 
     // we want to adjust the x and y equally to preserve ratio
 
