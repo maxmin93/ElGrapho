@@ -1,7 +1,7 @@
 /*
  * El Grapho v2.4.0
  * A high performance WebGL graph data visualization engine
- * Release Date: 11-22-2019
+ * Release Date: 12-04-2019
  * https://github.com/ericdrowell/elgrapho
  * Licensed under the MIT or GPL Version 2 licenses.
  *
@@ -3379,7 +3379,7 @@ module.exports = Chord;
 
 //const fitToViewport = require('./utils/fitToViewport');
 
-const Cluster = function(model) {
+const Cluster = function(model, col) {
   // let width = model.width;
   // let height = model.height;
 
@@ -3397,8 +3397,11 @@ const Cluster = function(model) {
   // keys are color integers, values are arrays.  The arrays contain node indices
   let groups = {};
 
+  // modified by maxmin93 (2019-12-04)
+  if( !col ) col = 'group';
+
   model.nodes.forEach(function(node, n) {
-    let group = node.group;
+    let group = node[col];
     if (groups[group] === undefined) {
       groups[group] = [];
     }
